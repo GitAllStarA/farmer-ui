@@ -40,8 +40,7 @@ function FindLand() {
   const [useWid, setUseWid] = useState(0);
   const [landName, setLandName] = useState("");
 
-
-  const handleRowDoubleClick = (index,name) => {
+  const handleRowDoubleClick = (index, name) => {
     setShowButton(index);
     data.map((row, idx) => {
       if (index === idx) {
@@ -52,15 +51,14 @@ function FindLand() {
         setLandName(name);
         console.log(useLen);
         console.log(useWid);
-        console.log(landName)
+        console.log(landName);
       }
     });
   };
 
-
   const renderButtonRow = (index, name) => {
     if (showButton === index && useLen > 0 && useWid > 0) {
-    console.log("here land name for render button "+landName);  
+      console.log("here land name for render button " + landName);
       return (
         <button
           style={{
@@ -79,8 +77,37 @@ function FindLand() {
     return null;
   };
 
+  const renderButtonRowLandDetails = (index, name) => {
+    if (showButton === index && useLen > 0 && useWid > 0) {
+      console.log("here land details for render button " + landName);
+      return (
+        <button
+          style={{
+            padding: "5px 5px",
+            textAlign: "center",
+            textDecoration: "none",
+            display: "inlineBlock",
+            fontSize: "10px",
+          }}
+          onClick={toFindLandDetails}
+        >
+          land details of {name}
+        </button>
+      );
+    }
+    return null;
+  };
+
   const toLandGrid = () => {
-    navigate("/landGrid", { state: { gridLen: useLen, gridWid: useWid, name: landName } });
+    navigate("/landGrid", {
+      state: { gridLen: useLen, gridWid: useWid, name: landName },
+    });
+  };
+
+  const toFindLandDetails = () => {
+    navigate("/findLandDetails", {
+      state: { gridLen: useLen, gridWid: useWid, name: landName },
+    });
   };
 
   return (
@@ -110,6 +137,7 @@ function FindLand() {
             <th>Acers</th>
             <th>Location</th>
             <th>{useLen > 0 && useWid > 0 ? "View Land Grids" : ""}</th>
+            <th>{useLen > 0 && useWid > 0 ? "View Land Details" : ""}</th>
           </tr>
         </thead>
         <tbody>
@@ -117,7 +145,7 @@ function FindLand() {
             data.map((row, index) => (
               <tr
                 key={row.id}
-                onClick={() => handleRowDoubleClick(index,row.name)}
+                onClick={() => handleRowDoubleClick(index, row.name)}
                 // style={{cursor: 'pointer'}}
                 className="clickable-row"
               >
@@ -132,6 +160,8 @@ function FindLand() {
                     ? renderButtonRow(index, row.name)
                     : " "}
                 </td>
+                <td>{useLen > 0 && useWid > 0
+                    ?renderButtonRowLandDetails(index, row.name): " "}</td>
               </tr>
             ))
           ) : (

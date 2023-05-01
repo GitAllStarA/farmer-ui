@@ -1,6 +1,5 @@
 .grid {
     display: grid;
-    grid-gap: 10px;
     justify-content: center;
     /* grid-template-rows: repeat(${numRows1}, 1fr);
     grid-template-columns: repeat(${numCols}, 1fr); */
@@ -12,7 +11,6 @@
 }
 
 .cell {
-    padding: 10px
         /* width: 30px; */
         /* height: 30px; */
         /* border: 0.4px solid rgb(107, 53, 53); */
@@ -23,11 +21,11 @@
 }
 
 .active {
-    background-color: rgb(51, 126, 51);
+    background-color: rgb(26, 189, 26);
 }
 
 .nonActive {
-    background-color: rgba(138, 74, 74, 0.798);
+    background-color: rgb(198, 195, 62);
 }
 
 .relativePositionP {
@@ -35,7 +33,6 @@
     font-style: italic;
     color: white;
     font-size: 15%;
-    padding: 25%;
     justify-content: center;
     display: flex;
 

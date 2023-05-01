@@ -7,6 +7,7 @@ import Grid from "./unUsedComponents/Grid";
 import Grid2 from "./component/Grid2";
 import { useState } from "react";
 import LandGrid from "./component/LandGrid";
+import FindLandDetails from "./component/FindLandDetails";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" exact element={<HomePage />} />
         <Route path="/findLand" element={<FindLand />} />
         <Route path="/landGrid" element={<LandGrid />} />
+        <Route path="/findLandDetails" element={<FindLandDetails/>}/>
       </Routes>
       <div className="app-container"></div>
     </div>

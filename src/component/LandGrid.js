@@ -75,7 +75,7 @@ function LandGrid() {
     const columnsSize = myLandGrids[0].length;
     const rowNCol = whatCell-1;
     let coordinatesOfCell = "%5B" +Math.floor(rowNCol / columnsSize) + "," + (rowNCol % columnsSize) + "%5D";
-    const cellCropUrlString = `http://localhost:9090/v1/addCrop?lname=${landName}&gridCell=${coordinatesOfCell}&cname=${crop_seed}&sowDateTime=${sowDateTime}&relativePosition=${whatCell}`;
+    const cellCropUrlString = `http://localhost:9090/v1/addCrop?lname=${landName}&gridCell=${coordinatesOfCell}&cname=${crop_seed}&sowDateTime=${sowDateTime}&relativePosition=${whatCell}&landLen=${x}&landWid=${y}`;
     event.preventDefault();
     await axios
       .get(cellCropUrlString)
